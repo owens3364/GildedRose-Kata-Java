@@ -17,7 +17,7 @@ class GildedRose {
         switch (ItemType.of(item)) {
             case GENERAL:
                 updateQualityOfGeneral(item);
-                break;
+                return;
             case AGED_BRIE:
                 updateQualityOfAgedBrie(item);
                 break;
@@ -83,7 +83,13 @@ class GildedRose {
     }
 
     private void updateQualityOfGeneral(Item item) {
-
+        if (item.sellIn < 0) {
+            item.quality = item.quality - 2;
+        } else {
+            item.quality--;
+        }
+        clipQualityRange(item);
+        item.sellIn--;
     }
 
     private void updateQualityOfAgedBrie(Item item) {
@@ -100,5 +106,12 @@ class GildedRose {
 
     private void updateQualityOfConjured(Item item) {
 
+    }
+
+    private void clipQualityRange(Item item) {
+        if (ItemType.of(item) != ItemType.SULFURAS) {
+            if (item.quality < 0) item.quality = 0;
+            if (item.quality > 50) item.quality = 50;
+        }
     }
 }

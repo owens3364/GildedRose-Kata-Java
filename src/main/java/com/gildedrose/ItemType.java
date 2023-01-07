@@ -19,7 +19,7 @@ public enum ItemType {
     public static ItemType of(Item item) {
         switch (item.name) {
             case "Aged Brie": return AGED_BRIE;
-            case "Backstages passes to a TAFKAL80ETC concert": return BACKSTAGE_PASSES;
+            case "Backstage passes to a TAFKAL80ETC concert": return BACKSTAGE_PASSES;
             case "Sulfuras, Hand of Ragnaros": return SULFURAS;
             case "Conjured item": return CONJURED;
             default: return GENERAL;

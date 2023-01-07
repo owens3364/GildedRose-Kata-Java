@@ -14,7 +14,23 @@ class GildedRose {
     }
 
     private void updateItemQuality(Item item) {
-
+        switch (ItemType.of(item)) {
+            case GENERAL:
+                updateQualityOfGeneral(item);
+                break;
+            case AGED_BRIE:
+                updateQualityOfAgedBrie(item);
+                break;
+            case BACKSTAGE_PASSES:
+                updateQualityOfBackstagePass(item);
+                break;
+            case SULFURAS:
+                updateQualityOfSulfuras(item);
+                break;
+            case CONJURED:
+                updateQualityOfConjured(item);
+                break;
+        }
 
         if (!item.name.equals(ItemType.AGED_BRIE.toString())
             && !item.name.equals(ItemType.BACKSTAGE_PASSES.toString())) {
@@ -64,5 +80,25 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private void updateQualityOfGeneral(Item item) {
+
+    }
+
+    private void updateQualityOfAgedBrie(Item item) {
+
+    }
+
+    private void updateQualityOfBackstagePass(Item item) {
+
+    }
+
+    private void updateQualityOfSulfuras(Item item) {
+
+    }
+
+    private void updateQualityOfConjured(Item item) {
+
     }
 }

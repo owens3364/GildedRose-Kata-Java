@@ -194,4 +194,27 @@ class GildedRoseTest {
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
     }
+
+    @Test
+    void sellIn_alwaysDecreasesByOne() {
+        int itemQuality = faker.number().numberBetween(Integer.MIN_VALUE, Integer.MAX_VALUE);
+        int sellIn = faker.number().numberBetween(Integer.MIN_VALUE, Integer.MAX_VALUE);
+        GildedRose app = new GildedRose(new Item[] {
+            new Item(faker.name().name(), sellIn, itemQuality)
+        });
+        app.updateQuality();
+        assertEquals(sellIn - 1, app.items[0].sellIn);
+    }
+
+    @Test
+    void name_neverChanges() {
+        String name = faker.name().name();
+        int itemQuality = faker.number().numberBetween(Integer.MIN_VALUE, Integer.MAX_VALUE);
+        int sellIn = faker.number().numberBetween(Integer.MIN_VALUE, Integer.MAX_VALUE);
+        GildedRose app = new GildedRose(new Item[] {
+            new Item(name, sellIn, itemQuality)
+        });
+        app.updateQuality();
+        assertEquals(name, app.items[0].name);
+    }
 }

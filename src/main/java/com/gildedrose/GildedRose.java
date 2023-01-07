@@ -23,7 +23,7 @@ class GildedRose {
                 return;
             case BACKSTAGE_PASSES:
                 updateQualityOfBackstagePass(item);
-                break;
+                return;
             case SULFURAS:
                 updateQualityOfSulfuras(item);
                 break;
@@ -103,7 +103,17 @@ class GildedRose {
     }
 
     private void updateQualityOfBackstagePass(Item item) {
-
+        if (item.sellIn <= 0) {
+            item.quality = 0;
+        } else if (item.sellIn < 6) {
+            item.quality += 3;
+        } else if (item.sellIn < 11) {
+            item.quality += 2;
+        } else {
+            item.quality++;
+        }
+        clipQualityRange(item);
+        item.sellIn--;
     }
 
     private void updateQualityOfSulfuras(Item item) {

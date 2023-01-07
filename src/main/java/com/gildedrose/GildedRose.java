@@ -20,7 +20,7 @@ class GildedRose {
                 return;
             case AGED_BRIE:
                 updateQualityOfAgedBrie(item);
-                break;
+                return;
             case BACKSTAGE_PASSES:
                 updateQualityOfBackstagePass(item);
                 break;
@@ -84,7 +84,7 @@ class GildedRose {
 
     private void updateQualityOfGeneral(Item item) {
         if (item.sellIn < 0) {
-            item.quality = item.quality - 2;
+            item.quality -= 2;
         } else {
             item.quality--;
         }
@@ -93,7 +93,13 @@ class GildedRose {
     }
 
     private void updateQualityOfAgedBrie(Item item) {
-
+        if (item.sellIn <= 0) {
+            item.quality += 2;
+        } else {
+            item.quality++;
+        }
+        clipQualityRange(item);
+        item.sellIn--;
     }
 
     private void updateQualityOfBackstagePass(Item item) {

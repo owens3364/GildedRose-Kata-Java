@@ -26,10 +26,10 @@ class GildedRose {
                 return;
             case SULFURAS:
                 updateQualityOfSulfuras(item);
-                break;
+                return;
             case CONJURED:
                 updateQualityOfConjured(item);
-                break;
+                return;
         }
 
         if (!item.name.equals(ItemType.AGED_BRIE.toString())
@@ -117,11 +117,18 @@ class GildedRose {
     }
 
     private void updateQualityOfSulfuras(Item item) {
-
+        item.quality = 80;
+        item.sellIn--;
     }
 
     private void updateQualityOfConjured(Item item) {
-
+        if (item.sellIn < 0) {
+            item.quality -= 4;
+        } else {
+            item.quality -= 2;
+        }
+        clipQualityRange(item);
+        item.sellIn--;
     }
 
     private void clipQualityRange(Item item) {

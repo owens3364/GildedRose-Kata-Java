@@ -121,7 +121,7 @@ class GildedRoseTest {
     @Test
     void quality_forConjuredItems_degradesByTwo() {
         int itemQuality = faker.number().numberBetween(2, 50);
-        int sellIn = faker.number().numberBetween(Integer.MIN_VALUE, Integer.MAX_VALUE);
+        int sellIn = faker.number().numberBetween(0, Integer.MAX_VALUE);
         GildedRose app = new GildedRose(new Item[] {
             new Item("Conjured item", sellIn, itemQuality)
         });

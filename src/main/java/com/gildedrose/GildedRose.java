@@ -17,20 +17,21 @@ class GildedRose {
         switch (ItemType.of(item)) {
             case GENERAL:
                 updateQualityOfGeneral(item);
-                return;
+                break;
             case AGED_BRIE:
                 updateQualityOfAgedBrie(item);
-                return;
+                break;
             case BACKSTAGE_PASSES:
                 updateQualityOfBackstagePass(item);
-                return;
+                break;
             case SULFURAS:
                 updateQualityOfSulfuras(item);
-                return;
+                break;
             case CONJURED:
                 updateQualityOfConjured(item);
-                return;
+                break;
         }
+        item.sellIn--;
     }
 
     private void updateQualityOfGeneral(Item item) {
@@ -40,7 +41,6 @@ class GildedRose {
             item.quality--;
         }
         clipQualityRange(item);
-        item.sellIn--;
     }
 
     private void updateQualityOfAgedBrie(Item item) {
@@ -50,7 +50,6 @@ class GildedRose {
             item.quality++;
         }
         clipQualityRange(item);
-        item.sellIn--;
     }
 
     private void updateQualityOfBackstagePass(Item item) {
@@ -64,12 +63,10 @@ class GildedRose {
             item.quality++;
         }
         clipQualityRange(item);
-        item.sellIn--;
     }
 
     private void updateQualityOfSulfuras(Item item) {
         item.quality = 80;
-        item.sellIn--;
     }
 
     private void updateQualityOfConjured(Item item) {
@@ -79,7 +76,6 @@ class GildedRose {
             item.quality -= 2;
         }
         clipQualityRange(item);
-        item.sellIn--;
     }
 
     private void clipQualityRange(Item item) {

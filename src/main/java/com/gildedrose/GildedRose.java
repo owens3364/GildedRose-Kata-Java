@@ -1,18 +1,6 @@
 package com.gildedrose;
 
 class GildedRose {
-    private static final String AGED_BRIE = "Aged Brie";
-    private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
-    private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
-    private static final String CONJURED_ITEM = "CONJURED ITEM";
-
-    private static final String[] specialItems = {
-        AGED_BRIE,
-        BACKSTAGE_PASSES,
-        SULFURAS,
-        CONJURED_ITEM,
-    };
-
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -26,10 +14,12 @@ class GildedRose {
     }
 
     private void updateItemQuality(Item item) {
-        if (!item.name.equals(AGED_BRIE)
-            && !item.name.equals(BACKSTAGE_PASSES)) {
+
+
+        if (!item.name.equals(ItemType.AGED_BRIE.toString())
+            && !item.name.equals(ItemType.BACKSTAGE_PASSES.toString())) {
             if (item.quality > 0) {
-                if (!item.name.equals(SULFURAS)) {
+                if (!item.name.equals(ItemType.SULFURAS.toString())) {
                     item.quality = item.quality - 1;
                 }
             }
@@ -37,7 +27,7 @@ class GildedRose {
             if (item.quality < 50) {
                 item.quality = item.quality + 1;
 
-                if (item.name.equals(BACKSTAGE_PASSES)) {
+                if (item.name.equals(ItemType.BACKSTAGE_PASSES.toString())) {
                     if (item.sellIn < 11) {
                         if (item.quality < 50) {
                             item.quality = item.quality + 1;
@@ -53,15 +43,15 @@ class GildedRose {
             }
         }
 
-        if (!item.name.equals(SULFURAS)) {
+        if (!item.name.equals(ItemType.SULFURAS.toString())) {
             item.sellIn = item.sellIn - 1;
         }
 
         if (item.sellIn < 0) {
-            if (!item.name.equals(AGED_BRIE)) {
-                if (!item.name.equals(BACKSTAGE_PASSES)) {
+            if (!item.name.equals(ItemType.AGED_BRIE.toString())) {
+                if (!item.name.equals(ItemType.BACKSTAGE_PASSES.toString())) {
                     if (item.quality > 0) {
-                        if (!item.name.equals(SULFURAS)) {
+                        if (!item.name.equals(ItemType.SULFURAS.toString())) {
                             item.quality = item.quality - 1;
                         }
                     }
